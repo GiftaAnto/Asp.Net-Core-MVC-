@@ -1,0 +1,22 @@
+﻿@model LoginAndRegister.Controllers.RegisterViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Registration Page";
+}
+<div>
+    <h2>Registration Page</h2>
+    <form action="/home/RegisterCheck">
+        <label for="fname">Name</label><br>
+        <input type="text" id="Name" name="Name" placeholder="Enter Name"><br><br><br>
+
+        <label for="fname">Email</label><br>
+        <input type="text" id="Email" name="Email" placeholder="Enter Email"><br><br><br>
+
+        <label for="lname">Password</label><br>
+        <input type="password" id="Password" name="Password" placeholder="Enter Password" /><br><br><br>
+        <label for="lname">Confirm Password</label><br>
+        <input type="password" id="ConfirmPassword" name="ConfirmPassword" placeholder="Enter Password Again" /><br><br><br>
+
+        <input type="submit" value="Register">
+    </form>
+</div>

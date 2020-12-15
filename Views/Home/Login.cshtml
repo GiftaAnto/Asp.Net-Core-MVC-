@@ -1,0 +1,17 @@
+﻿@model LoginAndRegister.Controllers.LoginViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Login Page";
+}
+<div>
+    <h2>Login page</h2>
+    <form action="/home/LoginCheck">
+        <label for="fname">Email</label><br>
+        <input type="text" id="email" name="email" placeholder="Enter Email"><br><br><br>
+
+        <label for="lname">Password</label><br>
+        <input type="password" id="password" name="password" placeholder="Enter Password" /><br><br><br>
+
+        <input type="submit" value="Login">
+    </form>
+</div>

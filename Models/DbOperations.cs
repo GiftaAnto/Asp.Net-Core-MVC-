@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -36,6 +36,19 @@ namespace LoginAndRegister.Models
                 return null;
             }
 
+        }
+
+        public Account IsExists(string Email)
+        {
+            Account acc = context.AccountTable.Find(Email);
+            if (acc != null)
+            {
+                return acc;
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

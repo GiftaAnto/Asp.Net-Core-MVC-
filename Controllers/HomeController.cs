@@ -1,4 +1,4 @@
-﻿using LoginAndRegister.Models;
+using LoginAndRegister.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -23,26 +23,43 @@ namespace LoginAndRegister.Controllers
         {
             return View();
         }
-        public ViewResult User(string message)
+        public new ViewResult User(string message)
         {
             ViewData["Message"] = message;
             return View();
         }
+        [HttpGet]
         public IActionResult Register()
         {
             return View();
         }
+        [HttpGet]
         public IActionResult Login()
         {
             return View();
         }
-        public ViewResult RegisterCheck(RegisterViewModel model)
+        [HttpPost]
+        public ViewResult Register(RegisterViewModel model)
         {
-            Account account = db.AddAccount(model.Name, model.Email, model.Password);
-            User("Hi " + account.Name);
-            return View("User");
+            if (ModelState.IsValid)
+            {
+                Account acc = db.IsExists(model.Email);
+                if (acc == null)
+                {
+                    Account account = db.AddAccount(model.Name, model.Email, model.Password);
+                    User("Hi " + account.Name);
+                    return View("User");
+                }
+                else
+                {
+                    User("This Email is already registered");
+                    return View("User");
+                }
+            }
+            return View();
         }
-        public ViewResult LoginCheck(LoginViewModel model)
+        [HttpPost]
+        public ViewResult Login(LoginViewModel model)
         {
             Account account = db.GetAccount(model.Email, model.Password);
             if (account != null)
